@@ -166,13 +166,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "name=" + name + ", address=" + address + ", dateOfBirth=" + dateOfBirth
-                + ", telephoneNumber=" + telephoneNumber + ", faxNumber=" + faxNumber + ", EmailAddress="
-                + EmailAddress + ", socialSecurityNumber=" + socialSecurityNumber + ", medicalRecordNumber="
-                + medicalRecordNumber + ", healthPlanBeneficiaryNumber=" + healthPlanBeneficiaryNumber
-                + ", bankAccountNumber=" + bankAccountNumber + ", certificateOrlicenseNumber="
-                + certificateOrlicenseNumber + ", vehicleId=" + vehicleId + ", vehicleSerialNumber="
-                + vehicleSerialNumber + ", vechicleLicensePlates=" + vechicleLicensePlates + ", deviceId="
-                + deviceId + ", deviceSerialNumber=" + deviceSerialNumber + ", linkedInId=" + linkedInId + '}';
+        return name;
     }
 }

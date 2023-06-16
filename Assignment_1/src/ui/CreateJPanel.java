@@ -320,6 +320,146 @@ public class CreateJPanel extends javax.swing.JPanel {
         String deviceSerialNumber = txtDSN.getText();
         String linkedInId = txtLinkedInProfile.getText();
 
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a name.");
+            return;
+        }
+        if (address.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter an address.");
+            return;
+        }
+        if (!dateOfBirth.matches("\\d{2}-\\d{2}-\\d{4}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid date of birth.");
+            return;
+        }
+        if (txtTelephoneNumber.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a telephone number.");
+            return;
+        }
+
+        if (!txtTelephoneNumber.getText().matches("\\d{10}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid telephone number.");
+            return;
+        }
+        if (!txtFN.getText().matches("\\d{10}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid fax number.");
+            return;
+        }
+        if (EmailAddress.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter an email address.");
+            return;
+        }
+
+        if (!txtEmail.getText().matches("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,6}$")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address.");
+            return;
+        }
+
+        if (socialSecurityNumber.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a social security number.");
+            return;
+        }
+
+        if (!txtSSN.getText().matches("\\d{9}-\\d{2}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid social security number.");
+            return;
+        }
+
+        if (txtMRN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a medical record number.");
+            return;
+        }
+
+        if (!txtMRN.getText().matches("\\d{5}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid medical record number.");
+            return;
+        }
+
+        if (txtHPBN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a health plan beneficiary number.");
+            return;
+        }
+
+        if (!txtHPBN.getText().matches("\\d{10}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid health plan beneficiary number.");
+            return;
+        }
+
+        if (txtBAN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a bank account number.");
+            return;
+        }
+
+        if (!txtBAN.getText().matches("\\d{12}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid bank account number.");
+            return;
+        }
+
+        if (txtCLN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a certificate or license number.");
+            return;
+        }
+
+        if (!txtCLN.getText().matches("\\d{10}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid certificate or license number.");
+            return;
+        }
+
+        if (txtVID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a vehicle ID.");
+            return;
+        }
+
+        if (!txtVID.getText().matches("\\d{5}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid vehicle ID.");
+            return;
+        }
+
+        if (txtVSN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a vehicle serial number.");
+            return;
+        }
+
+        if (!txtVSN.getText().matches("\\d{17}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid vehicle serial number.");
+            return;
+        }
+
+        if (txtVLPN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a vehicle license plate number.");
+            return;
+        }
+
+        if (!txtVLPN.getText().matches("\\d{7}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid vehicle license plate number.");
+            return;
+        }
+
+        if (txtDID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a device ID.");
+            return;
+        }
+
+        if (!txtDID.getText().matches("\\d{5}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid device ID.");
+            return;
+        }
+
+        if (txtDSN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a device serial number.");
+            return;
+        }
+
+        if (!txtDSN.getText().matches("\\d{17}")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid device serial number.");
+            return;
+        }
+
+        if (txtLinkedInProfile.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a LinkedIn profile URL.");
+            return;
+        }
+
         Person p = profile.addProfile();
         p.setName(name);
         p.setAddress(address);

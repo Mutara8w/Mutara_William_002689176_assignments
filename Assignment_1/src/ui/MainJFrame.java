@@ -15,11 +15,11 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    PersonDirectory history;
+    PersonDirectory profiles;
 
     public MainJFrame() {
         initComponents();
-        history = new PersonDirectory();
+        profiles = new PersonDirectory();
     }
 
     /**
@@ -105,13 +105,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        CreateJPanel createPanel = new CreateJPanel(history);
+        CreateJPanel createPanel = new CreateJPanel(profiles);
         splitPane.setRightComponent(createPanel);
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-        ViewJPanel viewPanel = new ViewJPanel(history);
+        ViewJPanel viewPanel = new ViewJPanel(profiles);
         splitPane.setRightComponent(viewPanel);
     }//GEN-LAST:event_btnViewActionPerformed
 
@@ -143,10 +143,8 @@ public class MainJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainJFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainJFrame().setVisible(true);
         });
     }
 

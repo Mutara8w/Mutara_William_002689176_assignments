@@ -33,7 +33,7 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         for (Person person : profile.getProfiles()) {
             Object[] row = new Object[17];
-            row[0] = person.getName();
+            row[0] = person;
             row[1] = person.getAddress();
             row[2] = person.getDateOfBirth();
             row[3] = person.getTelephoneNumber();
@@ -384,8 +384,9 @@ public class ViewJPanel extends javax.swing.JPanel {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblProfiles.getSelectedRow();
-        if (selectedRowIndex <= 0) {
+        if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
         }
 
         DefaultTableModel model = (DefaultTableModel) tblProfiles.getModel();
@@ -401,8 +402,10 @@ public class ViewJPanel extends javax.swing.JPanel {
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblProfiles.getSelectedRow();
-        if (selectedRowIndex <= 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row");
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Action performed successfully");
+            return;
         }
 
         DefaultTableModel model = (DefaultTableModel) tblProfiles.getModel();
