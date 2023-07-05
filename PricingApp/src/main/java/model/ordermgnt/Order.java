@@ -52,7 +52,7 @@ public class Order {
     public int getOrderTotal() {
         int sum = 0;
         for (OrderItem oi : orderitems) {
-            sum = sum + oi.getOrderItemTotal();
+            sum = (sum + oi.getOrderItemTotal());
         }
         return sum;
     }
@@ -60,7 +60,7 @@ public class Order {
     public int getOrderPricePerformance() {
         int sum = 0;
         for (OrderItem oi : orderitems) {
-            sum = sum + oi.calculatePricePerformance();     //positive and negative values       
+            sum = (sum + oi.calculatePricePerformance());     //positive and negative values       
         }
         return sum;
     }
@@ -87,6 +87,14 @@ public class Order {
             return false;
         }
 
+    }
+
+    public double getTotalCommission() {
+        double totalCommission = 0;
+        for (OrderItem oi : orderitems) {
+            totalCommission += oi.calculateCommission();
+        }
+        return totalCommission;
     }
 
     public void CancelOrder() {

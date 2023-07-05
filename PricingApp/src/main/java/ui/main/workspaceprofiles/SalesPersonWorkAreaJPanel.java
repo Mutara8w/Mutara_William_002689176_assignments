@@ -55,7 +55,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        reviewCommission = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         customerNameTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -104,17 +104,17 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(102, 153, 255));
-        jButton8.setFont(getFont());
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Review Comission");
-        jButton8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton8.setMaximumSize(new java.awt.Dimension(200, 40));
-        jButton8.setMinimumSize(new java.awt.Dimension(20, 20));
-        jButton8.setPreferredSize(new java.awt.Dimension(240, 25));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        reviewCommission.setBackground(new java.awt.Color(102, 153, 255));
+        reviewCommission.setFont(getFont());
+        reviewCommission.setForeground(new java.awt.Color(255, 255, 255));
+        reviewCommission.setText("Review Comission");
+        reviewCommission.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        reviewCommission.setMaximumSize(new java.awt.Dimension(200, 40));
+        reviewCommission.setMinimumSize(new java.awt.Dimension(20, 20));
+        reviewCommission.setPreferredSize(new java.awt.Dimension(240, 25));
+        reviewCommission.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                reviewCommissionActionPerformed(evt);
             }
         });
 
@@ -148,10 +148,11 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(399, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(reviewCommission, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +165,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reviewCommission, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,7 +210,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void reviewCommissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reviewCommissionActionPerformed
         // TODO add your handling code here:
 
         CardSequencePanel.removeAll();
@@ -217,7 +218,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
 //        ManageHazards drpd = new ManageHazards(businessunit, CardSequencePanel);
 //        CardSequencePanel.add("ManageRiskProfiles", drpd);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-}//GEN-LAST:event_jButton8ActionPerformed
+}//GEN-LAST:event_reviewCommissionActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
@@ -235,9 +236,9 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton reviewCommission;
     // End of variables declaration//GEN-END:variables
 
 }

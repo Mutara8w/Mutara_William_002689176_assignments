@@ -16,7 +16,6 @@ public class OrderItem {
     Product selectedproduct;
     int actualPrice;
     int quantity;
-    // int commission; // commission field to store commission
 
     @SuppressWarnings("LeakingThisInConstructor")
     public OrderItem(Product p, int paidprice, int q) {
@@ -68,6 +67,14 @@ public class OrderItem {
 
     }
 
+    public double calculateCommission() {
+        double commissionRate = 0.1; // 10% commission
+        if (actualPrice > selectedproduct.getTargetPrice()) {
+            return ((double) actualPrice - selectedproduct.getTargetPrice()) * commissionRate * quantity;
+        } else {
+            return 0;
+        }
+    }
 
     public Product getSelectedProduct() {
         return selectedproduct;

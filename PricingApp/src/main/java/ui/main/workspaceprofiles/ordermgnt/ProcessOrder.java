@@ -416,6 +416,22 @@ public class ProcessOrder extends javax.swing.JPanel {
     private void OrderItemsTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrderItemsTableMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_OrderItemsTableMousePressed
+//
+//    public double calculateCommission() {
+//        // Your algorithm here
+//        // For the sake of this example, let's assume it's 5% of the total order price
+//        double total = 0;
+//        for (int i = 0; i < OrderItemsTable.getRowCount(); i++) {
+//            total += Double.parseDouble(OrderItemsTable.getValueAt(i, 3).toString()); // summing total order price
+//        }
+//        return total * 0.05;
+//    }
+
+    public void updateCommission() {
+        double commission = currentOrder.getTotalCommission();  // get total commission from the current Order
+        commissionTextField.setText(String.format("%.2f", commission));
+    }
+
 
     private void AddProductItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductItemActionPerformed
         // TODO add your handling code here:
@@ -441,7 +457,7 @@ public class ProcessOrder extends javax.swing.JPanel {
 
         ((DefaultTableModel) OrderItemsTable.getModel()).addRow(row);
 
-        
+        updateCommission();
 
     }//GEN-LAST:event_AddProductItemActionPerformed
 
