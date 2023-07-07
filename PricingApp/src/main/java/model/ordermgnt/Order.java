@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.ordermgnt;
 
 import java.util.ArrayList;
@@ -10,11 +5,8 @@ import model.customermgnt.CustomerProfile;
 import model.marketmodel.MarketChannelAssignment;
 import model.productmgnt.Product;
 import model.salesmgnt.SalesPersonProfile;
+// import ui.main.workspaceprofiles.ordermgnt.ProcessOrder;
 
-/**
- *
- * @author kal bugrara
- */
 public class Order {
 
     ArrayList<OrderItem> orderitems;
@@ -48,7 +40,6 @@ public class Order {
         return oi;
     }
 
-    //order total is the sumer of the order item totals
     public int getOrderTotal() {
         int sum = 0;
         for (OrderItem oi : orderitems) {
@@ -75,7 +66,6 @@ public class Order {
         return sum;
     }
 
-    //sum all the item targets and compare to the total of the order 
     public boolean isOrderAboveTotalTarget() {
         int sum = 0;
         for (OrderItem oi : orderitems) {
@@ -86,7 +76,6 @@ public class Order {
         } else {
             return false;
         }
-
     }
 
     public double getTotalCommission() {
@@ -97,11 +86,19 @@ public class Order {
         return totalCommission;
     }
 
+    public void updateOrderItemActualPrice(OrderItem orderItem, int actualPrice) {
+        orderItem.setActualPrice(actualPrice);
+    }
+
     public void CancelOrder() {
         status = "Cancelled";
     }
 
     public void Submit() {
         status = "Submitted";
+    }
+
+    public ArrayList<OrderItem> getOrderitems() {
+        return orderitems;
     }
 }

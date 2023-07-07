@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.productmgnt;
 
 import java.util.ArrayList;
 import model.ordermgnt.OrderItem;
 
-/**
- *
- * @author kal bugrara
- */
 public class Product {
 
     private String name;
@@ -82,10 +73,6 @@ public class Product {
         }
         return true;
     }
-    //calculates the revenues gained or lost (in relation to the target)
-    //For example, if target is at $2000 and actual is $2500 then revenue gained
-    // is $500 above the expected target. If the actual is $1800 then the lose will be $200
-    // Add all these difference to get the total including wins and loses
 
     public int getOrderPricePerformance() {
         int sum = 0;

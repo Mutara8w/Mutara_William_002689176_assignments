@@ -9,6 +9,8 @@ import model.business.Business;
 import model.customermgnt.CustomerProfile;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.event.TableModelEvent;
+// import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import model.ordermgnt.MasterOrderList;
 import model.ordermgnt.Order;
@@ -53,11 +55,11 @@ public class ProcessOrder extends javax.swing.JPanel {
 
     private void initializeTable() {
 
-//clear supplier table
+        //clear supplier table
         cleanUpCombobox();
         cleanUpTable();
 
-//load suppliers to the combobox
+        //load suppliers to the combobox
         ArrayList<Supplier> supplierlist = business.getSupplierDirectory().getSuplierList();
 
         if (supplierlist.isEmpty()) {
@@ -83,18 +85,23 @@ public class ProcessOrder extends javax.swing.JPanel {
             }
 
         }
+
+        OrderItemsTable.getModel().addTableModelListener((TableModelEvent e) -> {
+            if (e.getType() == TableModelEvent.UPDATE && e.getColumn() == 1) {
+                int row = e.getFirstRow();
+                int actualPrice = Integer.parseInt(OrderItemsTable.getValueAt(row, 1).toString());
+                OrderItem orderItem = currentOrder.getOrderitems().get(row);
+                currentOrder.updateOrderItemActualPrice(orderItem, actualPrice);
+                updateCommission();
+            }
+        });
     }
 
     public void cleanUpCombobox() {
-        //Clean the combobox for supplier choices
-
         SuppliersComboBox.removeAllItems();
-
     }
 
     public void cleanUpTable() {
-
-        //Clean the product catalog table
         int rc = SupplierCatalogTable.getRowCount();
         int i;
         for (i = rc - 1; i >= 0; i--) {
@@ -103,8 +110,6 @@ public class ProcessOrder extends javax.swing.JPanel {
     }
 
     public void cleanUpItemsTable() {
-
-        //Clean the product catalog table
         int rc = OrderItemsTable.getRowCount();
         int i;
         for (i = rc - 1; i >= 0; i--) {
@@ -114,7 +119,6 @@ public class ProcessOrder extends javax.swing.JPanel {
 
     public void refreshSupplierProductCatalogTable() {
 
-//clear supplier table
         int rc = SupplierCatalogTable.getRowCount();
         int i;
         for (i = rc - 1; i >= 0; i--) {
@@ -136,11 +140,8 @@ public class ProcessOrder extends javax.swing.JPanel {
             row[1] = pt.getFloorPrice();
             row[2] = pt.getCeilingPrice();
             row[3] = pt.getTargetPrice();
-//                row[1] = pt.getPerformanceMeasure();
-//               row[2] = la.getName();
             ((DefaultTableModel) SupplierCatalogTable.getModel()).addRow(row);
         }
-
     }
 
     /**
@@ -255,7 +256,7 @@ public class ProcessOrder extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -365,8 +366,6 @@ public class ProcessOrder extends javax.swing.JPanel {
         currentOrder.Submit();
         CardSequencePanel.remove(this);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-
-
     }//GEN-LAST:event_NextActionPerformed
 
     private void SupplierCatalogTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SupplierCatalogTableMousePressed
@@ -416,22 +415,12 @@ public class ProcessOrder extends javax.swing.JPanel {
     private void OrderItemsTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrderItemsTableMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_OrderItemsTableMousePressed
-//
-//    public double calculateCommission() {
-//        // Your algorithm here
-//        // For the sake of this example, let's assume it's 5% of the total order price
-//        double total = 0;
-//        for (int i = 0; i < OrderItemsTable.getRowCount(); i++) {
-//            total += Double.parseDouble(OrderItemsTable.getValueAt(i, 3).toString()); // summing total order price
-//        }
-//        return total * 0.05;
-//    }
 
     public void updateCommission() {
+        System.out.println("Updating commission");
         double commission = currentOrder.getTotalCommission();  // get total commission from the current Order
         commissionTextField.setText(String.format("%.2f", commission));
     }
-
 
     private void AddProductItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductItemActionPerformed
         // TODO add your handling code here:
@@ -449,14 +438,11 @@ public class ProcessOrder extends javax.swing.JPanel {
 
         OrderItem item = currentOrder.newOrderItem(selectedproduct, 1000, 1);
         Object[] row = new Object[5];
-
         row[0] = String.valueOf(item.getSelectedProduct());
-        row[1] = String.valueOf(item.getActualPrice());
+        row[1] = 1000; // Set initial actual price here
         row[2] = String.valueOf(item.getQuantity());
         row[3] = String.valueOf(item.getOrderItemTotal());
-
         ((DefaultTableModel) OrderItemsTable.getModel()).addRow(row);
-
         updateCommission();
 
     }//GEN-LAST:event_AddProductItemActionPerformed
